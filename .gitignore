@@ -140,3 +140,7 @@ terraform.rc
 # Ignore all local history of files
 .history
 .ionide
+
+# ignore data folder
+data/*
+!data/.gitkeep
