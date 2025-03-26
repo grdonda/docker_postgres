@@ -7,11 +7,18 @@ services:
       - 5432:5432
     env_file:
       - ./envs/postgres.env
-    #volumes:
+    # adicionando a persistencia de dados na sua pasta do projeto
+    volumes:
     #  - ./data/postgres:/bitnami/postgresql
+      - ./entrypoint/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
-      - local
+      - docker_dba
 
 networks:
-  local:
+  docker_dba:
     driver: bridge
+
+# volume interno do container (não aparece na pasta do projeto)
+volumes:
+  postgres_data:
+    driver: local
