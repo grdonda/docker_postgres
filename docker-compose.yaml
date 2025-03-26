@@ -1,0 +1,17 @@
+services:
+  postgres:
+    container_name: postgres
+    hostname: local.postgres
+    image: bitnami/postgresql:latest
+    ports:
+      - 5432:5432
+    env_file:
+      - ./envs/postgres.env
+    #volumes:
+    #  - ./data/postgres:/bitnami/postgresql
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge
